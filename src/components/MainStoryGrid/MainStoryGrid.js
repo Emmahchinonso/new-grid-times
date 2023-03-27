@@ -1,17 +1,14 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import {
-  MAIN_STORY,
-  OPINION_STORIES,
-  SECONDARY_STORIES,
-} from '../../data';
+import { MAIN_STORY, OPINION_STORIES, SECONDARY_STORIES } from "../../data";
 
-import SectionTitle from '../SectionTitle';
-import MainStory from '../MainStory';
-import SecondaryStory from '../SecondaryStory';
-import OpinionStory from '../OpinionStory';
-import Advertisement from '../Advertisement';
+import SectionTitle from "../SectionTitle";
+import MainStory from "../MainStory";
+import SecondaryStory from "../SecondaryStory";
+import OpinionStory from "../OpinionStory";
+import Advertisement from "../Advertisement";
+import { COLORS, QUERIES } from "../../constants";
 
 const MainStoryGrid = () => {
   return (
@@ -47,12 +44,26 @@ const MainStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
-    'main-story'
-    'secondary-stories'
-    'opinion-stories'
-    'advertisement';
+    "main-story"
+    "secondary-stories"
+    "opinion-stories"
+    "advertisement";
   gap: 48px;
   margin-bottom: 48px;
+
+  @media (${QUERIES.tabletOnly}) {
+    grid-template-areas:
+      "main-story secondary-stories "
+      "advertisement advertisement"
+      "opinion-stories opinion-stories";
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+`;
+
+const StoryList = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const MainStorySection = styled.section`
@@ -61,15 +72,31 @@ const MainStorySection = styled.section`
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
-`;
 
-const StoryList = styled.div`
-  display: flex;
-  flex-direction: column;
+  & > ${StoryList} {
+    @media (${QUERIES.tabletOnly}) {
+      --border: 1px solid ${COLORS.gray[300]};
+      gap: 16px;
+      border-left: var(--border);
+      padding-left: 16px;
+
+      & > *:not(:last-child) {
+        border-bottom: var(--border);
+        padding-bottom: 16px;
+      }
+    }
+  }
 `;
 
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
+  & > ${StoryList} {
+    @media (${QUERIES.tabletOnly}) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+      gap: 32px;
+    }
+  }
 `;
 
 const AdvertisementSection = styled.section`
