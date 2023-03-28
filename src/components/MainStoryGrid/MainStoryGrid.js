@@ -42,13 +42,14 @@ const MainStoryGrid = () => {
 };
 
 const Wrapper = styled.div`
+  --border: 1px solid ${COLORS.gray[300]};
   display: grid;
   grid-template-areas:
     "main-story"
     "secondary-stories"
     "opinion-stories"
     "advertisement";
-  gap: 48px;
+  gap: 48px 0;
   margin-bottom: 48px;
 
   @media (${QUERIES.tabletOnly}) {
@@ -57,33 +58,47 @@ const Wrapper = styled.div`
       "advertisement advertisement"
       "opinion-stories opinion-stories";
     grid-template-columns: 2fr 1fr;
-    gap: 16px;
+  }
+
+  @media (${QUERIES.laptopAndUp}) {
+    & {
+      grid-template-areas:
+        "main-story secondary-stories opinion-stories"
+        "main-story advertisement advertisement";
+      gap: 16px 0;
+      grid-template-columns: 493px 1.5fr 1fr;
+    }
   }
 `;
 
 const StoryList = styled.div`
+  --border-bottom: var(--border);
+  --spacing: 16px;
   display: flex;
   flex-direction: column;
+  gap: var(--spacing);
+
+  & > *:not(:last-child) {
+    border-bottom: var(--border-bottom);
+    padding-bottom: var(--spacing);
+  }
 `;
 
 const MainStorySection = styled.section`
   grid-area: main-story;
+  @media (${QUERIES.tabletAndUp}) {
+    padding-right: 16px;
+    border-right: var(--border);
+    margin-right: 16px;
+  }
 `;
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
 
   & > ${StoryList} {
-    @media (${QUERIES.tabletOnly}) {
-      --border: 1px solid ${COLORS.gray[300]};
-      gap: 16px;
-      border-left: var(--border);
-      padding-left: 16px;
-
-      & > *:not(:last-child) {
-        border-bottom: var(--border);
-        padding-bottom: 16px;
-      }
+    @media (${QUERIES.laptopAndUp}) {
+      padding-right: 16px;
     }
   }
 `;
@@ -92,15 +107,27 @@ const OpinionSection = styled.section`
   grid-area: opinion-stories;
   & > ${StoryList} {
     @media (${QUERIES.tabletOnly}) {
+      --spacing: 0;
+      --border-bottom: none;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
       gap: 32px;
     }
   }
+
+  @media (${QUERIES.laptopAndUp}) {
+    padding-left: 16px;
+    border-left: var(--border);
+  }
 `;
 
 const AdvertisementSection = styled.section`
   grid-area: advertisement;
+
+  @media (${QUERIES.laptopAndUp}) {
+    padding-top: 16px;
+    border-top: var(--border);
+  }
 `;
 
 export default MainStoryGrid;

@@ -22,7 +22,7 @@ const Wrapper = styled.article`
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
-  @media (${QUERIES.tabletAndUp}) {
+  @media (${QUERIES.tabletOnly}) {
     grid-template-areas:
       "image"
       "heading"
@@ -54,14 +54,11 @@ const Abstract = styled.p`
   grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
-  @media (${QUERIES.tabletAndUp}) {
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* number of lines to show */
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export default SecondaryStory;

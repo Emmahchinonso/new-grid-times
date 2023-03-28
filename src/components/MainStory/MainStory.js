@@ -35,17 +35,19 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
+  --clamp-lines: 8;
   font-size: 1rem;
   margin-bottom: 1em;
   white-space: pre-wrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--clamp-lines); /* number of lines to show */
+  line-clamp: var(--clamp-lines);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 
-  @media (${QUERIES.tabletAndUp}) {
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 15; /* number of lines to show */
-    line-clamp: 15;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  @media (${QUERIES.tabletOnly}) {
+    --clamp-lines: 16;
   }
 `;
 
