@@ -147,6 +147,10 @@ const TopRow = styled.div`
     gap: 48px;
     justify-content: center;
   }
+
+  @media (${QUERIES.laptopAndUp}) {
+    justify-content: flex-end;
+  }
 `;
 
 const Social = styled.div`
@@ -168,16 +172,14 @@ const TopNavList = styled.ul`
 `;
 
 const MainNavArea = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 32px;
   padding: 32px 0 48px;
   text-align: center;
 
   @media (${QUERIES.tabletAndUp}) {
-    flex-direction: row;
-    gap: 78px;
-    flex-wrap: wrap;
+    --minimum-width: min(100%, 200px);
+    grid-template-columns: repeat(auto-fill, minmax(var(--minimum-width), 1fr));
     text-align: left;
   }
 `;
@@ -206,6 +208,10 @@ const Subfooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (${QUERIES.laptopAndUp}) {
+    align-items: start;
+  }
 `;
 
 const Logo = styled.a`
