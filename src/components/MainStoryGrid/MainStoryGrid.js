@@ -66,7 +66,7 @@ const Wrapper = styled.div`
         "main-story secondary-stories opinion-stories"
         "main-story advertisement advertisement";
       gap: 16px 0;
-      grid-template-columns: 493px 1.5fr 1fr;
+      grid-template-columns: 493px 1.3fr 1fr;
     }
   }
 `;
