@@ -29,20 +29,23 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
-        <DesktopActionGroup>
+        <Logo />
+      </MainHeader>
+      <DesktopHeader>
+        <ActionGroup>
           <button>
             <Search color={`${COLORS.gray[900]}`} size={24} />
           </button>
           <button>
             <Menu color={`${COLORS.gray[900]}`} size={24} />
           </button>
-        </DesktopActionGroup>
+        </ActionGroup>
         <Logo />
         <SubscribeGroup>
           <Button>Subscribe</Button>
           <SubscribeLink href="/">Already a subscriber?</SubscribeLink>
         </SubscribeGroup>
-      </MainHeader>
+      </DesktopHeader>
     </header>
   );
 };
@@ -62,13 +65,10 @@ const Row = styled(MaxWidthWrapper)`
 `;
 
 const SubscribeGroup = styled.div`
-  display: none;
-  @media (${QUERIES.laptopAndUp}) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 `;
 
 const SubscribeLink = styled.a`
@@ -90,13 +90,6 @@ const ActionGroup = styled.div`
   }
 `;
 
-const DesktopActionGroup = styled(ActionGroup)`
-  display: none;
-  @media (${QUERIES.laptopAndUp}) {
-    display: flex;
-  }
-`;
-
 const MainHeader = styled(MaxWidthWrapper)`
   display: flex;
   align-items: center;
@@ -104,7 +97,16 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
   @media (${QUERIES.laptopAndUp}) {
-    justify-content: space-between;
+    display: none;
+  }
+`;
+
+const DesktopHeader = styled(MainHeader)`
+  display: none;
+  justify-content: space-between;
+
+  @media (${QUERIES.laptopAndUp}) {
+    display: flex;
   }
 `;
 

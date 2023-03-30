@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { QUERIES } from '../../constants';
+import React from "react";
+import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
 
 const Advertisement = (props) => {
   return (
@@ -30,7 +30,7 @@ const Prefix = styled.p`
 
   &::before,
   &::after {
-    content: '—';
+    content: "—";
     margin: 0 8px;
   }
 `;
