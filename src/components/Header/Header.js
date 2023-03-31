@@ -65,14 +65,17 @@ const Row = styled(MaxWidthWrapper)`
 `;
 
 const SubscribeGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-self: end;
+  position: relative;
   gap: 8px;
 `;
 
 const SubscribeLink = styled.a`
+  position: absolute;
+  width: 100%;
+  margin-top: 8px;
   font-style: italic;
+  text-align: center;
   text-decoration: underline;
   color: var(--color-gray-900);
 `;
@@ -103,10 +106,17 @@ const MainHeader = styled(MaxWidthWrapper)`
 
 const DesktopHeader = styled(MainHeader)`
   display: none;
-  justify-content: space-between;
+
+  @media (${QUERIES.tabletAndUp}) {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
 
   @media (${QUERIES.laptopAndUp}) {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    margin-top: 16px;
+    margin-bottom: 72px;
   }
 `;
 
